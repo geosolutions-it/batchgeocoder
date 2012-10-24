@@ -2,7 +2,6 @@ package it.geosolutions.batchgeocoder.io;
 
 import it.geosolutions.batchgeocoder.model.Description;
 import it.geosolutions.batchgeocoder.model.Location;
-import it.geosolutions.batchgeocoder.model.LocationImpl;
 import it.geosolutions.batchgeocoder.model.Position;
 
 import java.io.FileReader;
@@ -50,7 +49,7 @@ public class CSVRepositoryReader implements Input {
 		allData.addAll(buildList(id,value, altValue, basePath + fileName));
 		
 		for(String[] el : allData){
-			Location loc = new LocationImpl();
+			Location loc = new Location();
 			loc.setPosition(new Position());
 			Description tmpDesc = new Description();
 			tmpDesc.setDescription(el);
@@ -71,7 +70,7 @@ public class CSVRepositoryReader implements Input {
 		allData.addAll(buildList(0, 2, null, FILE_PATH + "regioni_2012.csv"));
 		//List<String[]> list = fromMapToList(allData);
 		for(String[] el : allData){
-			Location loc = new LocationImpl();
+			Location loc = new Location();
 			loc.setPosition(new Position());
 			Description tmpDesc = new Description();
 			tmpDesc.setDescription(el);
