@@ -1,7 +1,7 @@
 package it.geosolutions.batchgeocoder.launcher;
 
 import it.geosolutions.batchgeocoder.geocoder.GeoCoder;
-import it.geosolutions.batchgeocoder.geocoder.NominatimGeocCoder;
+import it.geosolutions.batchgeocoder.geocoder.GoogleGeoCoder;
 import it.geosolutions.batchgeocoder.io.CSVRepositoryReader;
 import it.geosolutions.batchgeocoder.io.CSVRepositoryWriter;
 import it.geosolutions.batchgeocoder.io.Input;
@@ -42,7 +42,7 @@ public class SearchEngine {
 			LOG.log(Level.SEVERE, "failed to load configurations");
 		}
 		repo = new CSVRepositoryReader();
-		searcher = new NominatimGeocCoder(conf.getString("email"));
+		searcher = new GoogleGeoCoder("");// NominatimGeoCoder(conf.getString("email"));
 		listGeocoded = new CSVRepositoryWriter(OutputFileType.GEOCODED);
 		outDiscarded = new CSVRepositoryWriter(OutputFileType.DISCARDED);
 		

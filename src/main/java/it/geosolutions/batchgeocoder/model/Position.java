@@ -16,7 +16,7 @@ public class Position {
 
 	
 	private Double latitude;
-	private Double Longitude;
+	private Double longitude;
 	
 	private Double boundingNorth;
 	private Double boundingSouth;
@@ -25,7 +25,7 @@ public class Position {
 	
 	public Position(){
 		 latitude=0d;
-		 Longitude=0d;
+		 longitude=0d;
 		 boundingEast=0d;
 		 boundingNorth=0d;
 		 boundingSouth=0d;
@@ -38,7 +38,7 @@ public class Position {
 	}
 
 	public Double getLongitude() {
-		return Longitude;
+		return longitude;
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class Position {
 	public List<String> getPositionAsList(){
 		List<String> list = new ArrayList<String>();
 		list.add(String.valueOf(latitude));
-		list.add(String.valueOf(Longitude));
+		list.add(String.valueOf(longitude));
 		
 		list.add(String.valueOf(boundingNorth));
 		list.add(String.valueOf(boundingSouth));
@@ -74,12 +74,22 @@ public class Position {
 	
 	public void setPosition(Address address){
 		latitude=address.getLatitude();
-		Longitude=address.getLongitude();
+		longitude=address.getLongitude();
 		boundingEast=address.getBoundingBox().getEast();
 		boundingNorth=address.getBoundingBox().getNorth();
 		boundingSouth=address.getBoundingBox().getSouth();
 		boundingWest=address.getBoundingBox().getWest();
 	}
 	
+	public void setPoint(double lon, double lat){
+		this.latitude=lat;
+		this.longitude=lon;
+	}
 	
+	public void setBBOX(double easting, double northing, double southing, double westing){
+		this.boundingEast=easting;
+		this.boundingNorth=northing;
+		this.boundingSouth=southing;
+		this.boundingWest=westing;
+	}
 }
