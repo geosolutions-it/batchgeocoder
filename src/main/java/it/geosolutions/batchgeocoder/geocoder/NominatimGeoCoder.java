@@ -23,15 +23,15 @@ import fr.dudie.nominatim.model.Address;
  * @author DamianoG
  * Implement coding operation using Nominatim API, see http://wiki.openstreetmap.org/wiki/Nominatim
  */
-public class NominatimGeocCoder extends GeoCoder {
+public class NominatimGeoCoder extends GeoCoder {
 
 	private NominatimClient client;
-	private static Logger LOG = Logger.getLogger(NominatimGeocCoder.class
+	private static Logger LOG = Logger.getLogger(NominatimGeoCoder.class
 			.getCanonicalName());
-//	private NominatimSearch searcher;
+
 	private static String STATE_SUFFIX = ", Italia";
 	
-	public NominatimGeocCoder(String email){
+	public NominatimGeoCoder(String email){
 		HttpClient httpClient = new DefaultHttpClient();
 		client = new JsonNominatimClient(httpClient, email);
 	}
@@ -60,7 +60,6 @@ public class NominatimGeocCoder extends GeoCoder {
 			}
 		}
 		Position pos = new Position();
-		//pos.setPosition();
 		location.setPosition(pos);
 		return false;
 		

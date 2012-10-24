@@ -22,7 +22,6 @@ import au.com.bytecode.opencsv.CSVReader;
 public class CSVRepositoryReader implements Input {
 	
 	private static Logger LOG = Logger.getLogger(CSVRepositoryReader.class.getCanonicalName());
-//	private static String STATE_SUFFIX = ", Italia";
 	private static String FILE_PATH = "src/main/resources/";
 	private List<Location> locationList;
 
