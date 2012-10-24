@@ -1,16 +1,10 @@
 package it.geosolutions.batchgeocoder.geocoder;
 
-import fr.dudie.nominatim.model.Address;
 import it.geosolutions.batchgeocoder.model.Location;
 import it.geosolutions.batchgeocoder.model.Position;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.swing.JOptionPane;
 
 import com.google.code.geocoder.Geocoder;
 import com.google.code.geocoder.GeocoderRequestBuilder;
@@ -23,18 +17,17 @@ import com.google.code.geocoder.model.LatLngBounds;
 
 /**
  * 
- * @author DamianoG
- * Implement coding operation using Nominatim API, see http://wiki.openstreetmap.org/wiki/Nominatim
+ * @author Simone Giannecchini, GeoSolutions SAS
+ * Implement coding operation using Google API, see https://developers.google.com/maps/documentation/geocoding
  */
 public class GoogleGeoCoder extends GeoCoder {
 
 	private Geocoder client;
+	
 	private static Logger LOG = Logger.getLogger(GoogleGeoCoder.class
 			.getCanonicalName());
-
-	private static String STATE_SUFFIX = ", Italia";
 	
-	public GoogleGeoCoder(String email){
+	public GoogleGeoCoder(){
 		client = new Geocoder();
 	}
 	

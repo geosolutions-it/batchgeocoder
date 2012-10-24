@@ -1,6 +1,7 @@
 package it.geosolutions.batchgeocoder.launcher;
 
 import it.geosolutions.batchgeocoder.geocoder.GeoCoder;
+import it.geosolutions.batchgeocoder.geocoder.GeoCoderFactory;
 import it.geosolutions.batchgeocoder.geocoder.GoogleGeoCoder;
 import it.geosolutions.batchgeocoder.io.CSVRepositoryReader;
 import it.geosolutions.batchgeocoder.io.CSVRepositoryWriter;
@@ -40,9 +41,13 @@ public class SearchEngine {
 			conf = new PropertiesConfiguration("configuration.properties");
 		} catch (ConfigurationException e) {
 			LOG.log(Level.SEVERE, "failed to load configurations");
+			throw new RuntimeException(e);
 		}
 		repo = new CSVRepositoryReader();
-		searcher = new GoogleGeoCoder("");// NominatimGeoCoder(conf.getString("email"));
+		searcher = GeoCoderFactory.createGeoCoder(conf);
+		if(searcher==null){
+			throw new IllegalStateException("Unable to create a GeoCoder, please check the configuration.");
+		}
 		listGeocoded = new CSVRepositoryWriter(OutputFileType.GEOCODED);
 		outDiscarded = new CSVRepositoryWriter(OutputFileType.DISCARDED);
 		
@@ -67,7 +72,7 @@ public class SearchEngine {
 			}
 			else{
 				geocodedList.add(el);
-				LOG.info("Geocoded " + el.getName());
+				LOG.info("Geocoded " + el.getName()+ " with location:"+el.getLocationAsList());
 			}
 			
 			try {

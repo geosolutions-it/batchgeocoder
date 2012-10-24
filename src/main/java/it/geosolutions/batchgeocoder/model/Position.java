@@ -15,21 +15,15 @@ import fr.dudie.nominatim.model.Address;
 public class Position {
 
 	
-	private Double latitude;
-	private Double longitude;
+	private double latitude;
+	private double longitude;
 	
-	private Double boundingNorth;
-	private Double boundingSouth;
-	private Double boundingWest;
-	private Double boundingEast;
+	private double boundingNorth;
+	private double boundingSouth;
+	private double boundingWest;
+	private double boundingEast;
 	
 	public Position(){
-		 latitude=0d;
-		 longitude=0d;
-		 boundingEast=0d;
-		 boundingNorth=0d;
-		 boundingSouth=0d;
-		 boundingWest=0d;
 	}
 	
 	

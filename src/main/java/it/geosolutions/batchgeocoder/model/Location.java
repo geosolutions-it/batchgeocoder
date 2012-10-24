@@ -1,43 +1,78 @@
 package it.geosolutions.batchgeocoder.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.LinearRing;
+import com.vividsolutions.jts.geom.Polygon;
+
 /**
  * 
  * @author DamianoG
- *
- *	Interface Location provide a facade for a geographical Location. 
- *	It expose general methods for access to a metadata and geodata for a geographical location.
- *
+ * Provide a default implementation for location Object
  */
-public interface Location {
+public class Location {
 	
-	/**
-	 * 
-	 * @return a list of all alternative name for this Location, in order of importance
-	 */
-	public List<String> getAlternativeNames();
 	
-	/**
-	 * 
-	 * @param position Set the Position object for this location
-	 */
-	public void setPosition(Position position);
+	private Description description;
+	private Position position;
 	
-	/**
-	 * 
-	 * @param description Set the Description object for this location
-	 */
-	public void setDescription(Description description);
+
+	public List<String> getLocationAsList() {
+		List<String> list = new ArrayList<String>();
+		list.add(description.getName());
+		list.addAll(position.getPositionAsList());
+		return list;
+	}
+
+	public List<String> getAlternativeNames() {
+		return description.getAllAlternatives();
+	}
+
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
 	
-	/**
-	 * 
-	 * @return the rappresentation of this Location as a list in the order: name,lat,long,boundingbox coordinates
-	 */
-	public List<String> getLocationAsList();
+
+	public void setDescription(Description description) {
+		this.description = description;
+	}
 	
-	/**
-	 * 
-	 * @return the most relevant name for this location
-	 */
-	public String getName();
+
+	public String getName(){
+		return this.description.getName();
+	}
+	
+
+	public Polygon getJTSBoundingBox(){
+		Polygon jtsPoly = buildJTSPolygon();
+		return jtsPoly;
+	}
+	
+
+	private Polygon buildJTSPolygon() {
+
+		Map<String, Double> bounds = position.getBoundingBoxPoints();
+		double lat = position.getLatitude();
+		double lon = position.getLongitude();
+		
+		Coordinate[] coords = new Coordinate[4];
+		coords[0] = new Coordinate(lon, lat - bounds.get("north"));
+		coords[1] = new Coordinate(lon, lat + bounds.get("south"));
+		coords[2] = new Coordinate(lon - bounds.get("weast"), lat);
+		coords[3] = new Coordinate(lon + bounds.get("east"), lat);
+		
+		GeometryFactory geometryFactory = new GeometryFactory();
+		
+		LinearRing ring = geometryFactory.createLinearRing(coords);
+		LinearRing holes[] = null; // use LinearRing[] to represent holes
+		Polygon polygon = geometryFactory.createPolygon(ring, holes);
+		return polygon;
+
+	}
+	
 }
