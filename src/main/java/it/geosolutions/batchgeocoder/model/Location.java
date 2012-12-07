@@ -16,15 +16,22 @@ import com.vividsolutions.jts.geom.Polygon;
  */
 public class Location {
 	
+	public enum TYPE
+	{
+		regione,
+		comune,
+		provincia
+	}
 	
 	private Description description;
 	private Position position;
-	
+	private TYPE type;
 
 	public List<String> getLocationAsList() {
 		List<String> list = new ArrayList<String>();
 		list.add(description.getName());
 		list.addAll(position.getPositionAsList());
+		list.add(String.valueOf(type.ordinal()));
 		return list;
 	}
 
@@ -47,6 +54,14 @@ public class Location {
 		return this.description.getName();
 	}
 	
+
+	public void setType(TYPE type) {
+		this.type = type;
+	}
+
+	public TYPE getType() {
+		return type;
+	}
 
 	public Polygon getJTSBoundingBox(){
 		Polygon jtsPoly = buildJTSPolygon();

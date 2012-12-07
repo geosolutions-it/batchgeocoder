@@ -2,12 +2,11 @@ package it.geosolutions.batchgeocoder.launcher;
 
 import it.geosolutions.batchgeocoder.geocoder.GeoCoder;
 import it.geosolutions.batchgeocoder.geocoder.GeoCoderFactory;
-import it.geosolutions.batchgeocoder.geocoder.GoogleGeoCoder;
-import it.geosolutions.batchgeocoder.io.CSVRepositoryReader;
 import it.geosolutions.batchgeocoder.io.CSVRepositoryWriter;
 import it.geosolutions.batchgeocoder.io.Input;
 import it.geosolutions.batchgeocoder.io.Output;
 import it.geosolutions.batchgeocoder.io.OutputFileType;
+import it.geosolutions.batchgeocoder.io.SolrDictionaryRepositoryReader;
 import it.geosolutions.batchgeocoder.model.Location;
 
 import java.util.ArrayList;
@@ -38,12 +37,12 @@ public class SearchEngine {
 	
 	public SearchEngine(){
 		try {
-			conf = new PropertiesConfiguration("configuration.properties");
+			conf = new PropertiesConfiguration(SearchEngine.class.getClassLoader().getResource("configuration.properties"));
 		} catch (ConfigurationException e) {
 			LOG.log(Level.SEVERE, "failed to load configurations");
 			throw new RuntimeException(e);
 		}
-		repo = new CSVRepositoryReader();
+		repo = new SolrDictionaryRepositoryReader(conf); //new CSVRepositoryReader();
 		searcher = GeoCoderFactory.createGeoCoder(conf);
 		if(searcher==null){
 			throw new IllegalStateException("Unable to create a GeoCoder, please check the configuration.");

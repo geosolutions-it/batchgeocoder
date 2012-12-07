@@ -13,8 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.configuration.Configuration;
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
 
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -23,9 +21,11 @@ public class CSVRepositoryReader implements Input {
 	private static Logger LOG = Logger.getLogger(CSVRepositoryReader.class.getCanonicalName());
 	private static String FILE_PATH = "src/main/resources/";
 	private List<Location> locationList;
-
-	public CSVRepositoryReader(){
+	private Configuration conf;
+	
+	public CSVRepositoryReader(Configuration conf){
 		locationList = new ArrayList<Location>();
+		this.conf = conf;
 	}
 	
 	public List<Location> getLocations() {
@@ -33,12 +33,6 @@ public class CSVRepositoryReader implements Input {
 	}
 	
 	public void loadLocations() {
-		Configuration conf = null;
-		try {
-			conf = new PropertiesConfiguration("configuration.properties");
-		} catch (ConfigurationException e) {
-			LOG.log(Level.SEVERE, "failed to load configurations");
-		}
 		int id = conf.getInt("index.id");
 		int value = conf.getInt("index.value");
 		Integer altValue = (!conf.getString("index.altValue").isEmpty())?conf.getInt("index.altValue"):null;
