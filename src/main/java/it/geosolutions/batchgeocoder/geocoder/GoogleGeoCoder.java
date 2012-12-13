@@ -1,6 +1,7 @@
 package it.geosolutions.batchgeocoder.geocoder;
 
 import it.geosolutions.batchgeocoder.model.Location;
+import it.geosolutions.batchgeocoder.model.Location.TYPE;
 import it.geosolutions.batchgeocoder.model.Position;
 
 import java.util.List;
@@ -45,33 +46,36 @@ public class GoogleGeoCoder extends GeoCoder {
 		
 		GeocodeResponse result = null;
 		for(String el : location.getAlternativeNames()){
-			builder.setAddress(el);
+			builder.setAddress((location.getType()==TYPE.comune ? "Comune di ":"") + el + ", IT");
 			final GeocoderRequest geocoderRequest=builder.getGeocoderRequest();
 			result = client.geocode(geocoderRequest);
-			switch(result.getStatus()){
-			case OK:
-				// parse the results
-				final List<GeocoderResult> results = result.getResults();
-				if(results!=null&&!results.isEmpty()){
-					final GeocoderResult address = results.get(0);
-					Position pos = new Position();
-					final GeocoderGeometry geometry = address.getGeometry();
-					final LatLng latlon = geometry.getLocation();
-					final LatLngBounds bbox = geometry.getViewport();
-					pos.setPoint(latlon.getLng().doubleValue(), latlon.getLat().doubleValue());
-					pos.setBBOX(
-							bbox.getNortheast().getLng().doubleValue(), 
-							bbox.getNortheast().getLat().doubleValue(), 
-							bbox.getSouthwest().getLat().doubleValue(), 
-							bbox.getSouthwest().getLng().doubleValue());
-					
-					location.setPosition(pos);
-					return true;							
-				}
-			break;
-			default:
+			if (result != null)
+			{
+				switch(result.getStatus()){
+				case OK:
+					// parse the results
+					final List<GeocoderResult> results = result.getResults();
+					if(results!=null&&!results.isEmpty()){
+						final GeocoderResult address = results.get(0);
+						Position pos = new Position();
+						final GeocoderGeometry geometry = address.getGeometry();
+						final LatLng latlon = geometry.getLocation();
+						final LatLngBounds bbox = geometry.getViewport();
+						pos.setPoint(latlon.getLng().doubleValue(), latlon.getLat().doubleValue());
+						pos.setBBOX(
+								bbox.getNortheast().getLng().doubleValue(), 
+								bbox.getNortheast().getLat().doubleValue(), 
+								bbox.getSouthwest().getLat().doubleValue(), 
+								bbox.getSouthwest().getLng().doubleValue());
+						
+						location.setPosition(pos);
+						return true;							
+					}
 				break;
-			
+				default:
+					break;
+				
+				}
 			}
 		}
 		Position pos = new Position();
