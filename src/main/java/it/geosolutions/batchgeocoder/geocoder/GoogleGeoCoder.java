@@ -46,7 +46,7 @@ public class GoogleGeoCoder extends GeoCoder {
 		
 		GeocodeResponse result = null;
 		for(String el : location.getAlternativeNames()){
-			builder.setAddress((location.getType()==TYPE.comune ? "Comune di ":"") + el + ", IT");
+			builder.setAddress((location.getType()==TYPE.comune ? "Comune di ":"") + el + ", IT");  // TODO customizable
 			final GeocoderRequest geocoderRequest=builder.getGeocoderRequest();
 			result = client.geocode(geocoderRequest);
 			if (result != null)

@@ -49,7 +49,6 @@ public class SearchEngine {
 		}
 		listGeocoded = new CSVRepositoryWriter(OutputFileType.GEOCODED);
 		outDiscarded = new CSVRepositoryWriter(OutputFileType.DISCARDED);
-		
 	}
 	
 	/*

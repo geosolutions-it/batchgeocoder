@@ -54,7 +54,6 @@ public class Location {
 		return this.description.getName();
 	}
 	
-
 	public void setType(TYPE type) {
 		this.type = type;
 	}
