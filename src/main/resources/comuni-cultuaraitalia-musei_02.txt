@@ -1464,7 +1464,7 @@ Italia / Lombardia / Bergamo / Albano Sant'Alessandro
 Italia / Lombardia / Bergamo / Albino
 Italia / Lombardia / Bergamo / Almenno San Bartolomeo
 Italia / Lombardia / Bergamo / Almenno San Salvatore
-Italia / Lombardia / Bergamo / AlmÃ¨
+Italia / Lombardia / Bergamo / Almé
 Italia / Lombardia / Bergamo / Alzano Lombardo
 Italia / Lombardia / Bergamo / Ambivere
 Italia / Lombardia / Bergamo / Antegnate
@@ -1664,7 +1664,7 @@ Italia / Lombardia / Bergamo / Verdello
 Italia / Lombardia / Bergamo / Vertova
 Italia / Lombardia / Bergamo / Viadanica
 Italia / Lombardia / Bergamo / Villa d'Adda
-Italia / Lombardia / Bergamo / Villa d'AlmÃ¨
+Italia / Lombardia / Bergamo / Villa d'Almé
 Italia / Lombardia / Bergamo / Villa d'Ogna
 Italia / Lombardia / Bergamo / Villa di Serio
 Italia / Lombardia / Bergamo / Villongo
@@ -1830,7 +1830,7 @@ Italia / Lombardia / Brescia / Rodengo Saiano
 Italia / Lombardia / Brescia / Rodengo-Saiano
 Italia / Lombardia / Brescia / Roncadelle
 Italia / Lombardia / Brescia / Rovato
-Italia / Lombardia / Brescia / RoÃ¨ Volciano
+Italia / Lombardia / Brescia / Roé Volciano
 Italia / Lombardia / Brescia / Rudiano
 Italia / Lombardia / Brescia / Sabbio Chiese
 Italia / Lombardia / Brescia / Sale Marasino
@@ -1987,7 +1987,7 @@ Italia / Lombardia / Como / Oltrona di San Mamette
 Italia / Lombardia / Como / Orsenigo
 Italia / Lombardia / Como / Osnago
 Italia / Lombardia / Como / Ossuccio
-Italia / Lombardia / Como / ParÃ¨
+Italia / Lombardia / Como / Paré
 Italia / Lombardia / Como / Peglio
 Italia / Lombardia / Como / Pellio Intelvi
 Italia / Lombardia / Como / Pianello del Lario
@@ -2199,7 +2199,7 @@ Italia / Lombardia / Lecco / Primaluna
 Italia / Lombardia / Lecco / Robbiate
 Italia / Lombardia / Lecco / Rogeno
 Italia / Lombardia / Lecco / Rovagnate
-Italia / Lombardia / Lecco / Santa Maria HoÃ¨
+Italia / Lombardia / Lecco / Santa Maria Hoé
 Italia / Lombardia / Lecco / Sirone
 Italia / Lombardia / Lecco / Sirtori
 Italia / Lombardia / Lecco / Suello

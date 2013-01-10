@@ -2,6 +2,7 @@ package it.geosolutions.batchgeocoder.io;
 
 import it.geosolutions.batchgeocoder.model.Description;
 import it.geosolutions.batchgeocoder.model.Location;
+import it.geosolutions.batchgeocoder.model.Location.TYPE;
 import it.geosolutions.batchgeocoder.model.Position;
 
 import java.io.FileReader;
@@ -48,6 +49,7 @@ public class CSVRepositoryReader implements Input {
 			Description tmpDesc = new Description();
 			tmpDesc.setDescription(el);
 			loc.setDescription(tmpDesc);
+			loc.setType(TYPE.valueOf(conf.getString("location.type")));
 			locationList.add(loc);
 		}
 		

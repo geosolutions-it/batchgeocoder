@@ -19,17 +19,19 @@ public class Location {
 	public enum TYPE
 	{
 		regione,
-		comune,
-		provincia
+		provincia,
+		comune
 	}
 	
 	private Description description;
+	private Description parent;
 	private Position position;
 	private TYPE type;
 
 	public List<String> getLocationAsList() {
 		List<String> list = new ArrayList<String>();
 		list.add(description.getName());
+		list.add(parent.getName());
 		list.addAll(position.getPositionAsList());
 		list.add(String.valueOf(type.ordinal()));
 		return list;
@@ -50,6 +52,14 @@ public class Location {
 	}
 	
 
+	public void setParent(Description parent) {
+		this.parent = parent;
+	}
+
+	public Description getParent() {
+		return parent;
+	}
+
 	public String getName(){
 		return this.description.getName();
 	}
@@ -69,7 +79,6 @@ public class Location {
 	
 
 	private Polygon buildJTSPolygon() {
-
 		Map<String, Double> bounds = position.getBoundingBoxPoints();
 		double lat = position.getLatitude();
 		double lon = position.getLongitude();
@@ -86,7 +95,6 @@ public class Location {
 		LinearRing holes[] = null; // use LinearRing[] to represent holes
 		Polygon polygon = geometryFactory.createPolygon(ring, holes);
 		return polygon;
-
 	}
 	
 }

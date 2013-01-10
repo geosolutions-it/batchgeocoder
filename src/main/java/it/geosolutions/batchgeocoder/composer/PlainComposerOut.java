@@ -24,15 +24,16 @@ public class PlainComposerOut implements OutputComposer{
 	}
 	
 	public String[] composeHeader(){
-		String [] header = new String[8];
+		String [] header = new String[9];
 		header[0] = "NAME";
-		header[1] = "LATITUDE";
-		header[2] = "LONGITUDE";
-		header[3] = "NORTH";
-		header[4] = "SOUTH";
-		header[5] = "EAST";
-		header[6] = "WEST";
-		header[7] = "TYPE";
+		header[1] = "PARENT";
+		header[2] = "LATITUDE";
+		header[3] = "LONGITUDE";
+		header[4] = "NORTH";
+		header[5] = "SOUTH";
+		header[6] = "EAST";
+		header[7] = "WEST";
+		header[8] = "TYPE";
 		return header;
 	}
 

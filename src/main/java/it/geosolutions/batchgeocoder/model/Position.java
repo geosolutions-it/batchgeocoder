@@ -66,13 +66,19 @@ public class Position {
 		return list;
 	}
 	
+	
+	// Nominatim position
 	public void setPosition(Address address){
 		latitude=address.getLatitude();
 		longitude=address.getLongitude();
-		boundingEast=address.getBoundingBox().getEast();
+		/*boundingEast=address.getBoundingBox().getEast();
 		boundingNorth=address.getBoundingBox().getNorth();
 		boundingSouth=address.getBoundingBox().getSouth();
-		boundingWest=address.getBoundingBox().getWest();
+		boundingWest=address.getBoundingBox().getWest();*/
+		boundingEast=address.getBoundingBox().getSouth();
+		boundingNorth=address.getBoundingBox().getWest();
+		boundingSouth=address.getBoundingBox().getEast();
+		boundingWest=address.getBoundingBox().getNorth();
 	}
 	
 	public void setPoint(double lon, double lat){

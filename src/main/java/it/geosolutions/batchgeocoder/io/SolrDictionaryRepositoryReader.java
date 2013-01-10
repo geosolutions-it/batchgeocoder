@@ -66,7 +66,7 @@ public class SolrDictionaryRepositoryReader implements Input {
 			fstream = new FileInputStream(new File(filename));
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
-			BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+			BufferedReader br = new BufferedReader(new InputStreamReader(in, "LATIN1"));
 			String strLine;
 			// Read File Line By Line
 
