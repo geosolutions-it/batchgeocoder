@@ -94,6 +94,9 @@ public class NominatimGeoCoder extends GeoCoder {
 					discardedList.add(location);
 					Position pos = new Position();
 					location.setPosition(pos);
+					Description parent = new Description();
+					parent.setDescription(new String[] {"0", location.getName()});
+					location.setParent(parent);
 					LOG.info("Discarded " + location.getName());
 				}
 			}
